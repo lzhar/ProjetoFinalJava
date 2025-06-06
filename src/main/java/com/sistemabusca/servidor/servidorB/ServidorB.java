@@ -1,5 +1,7 @@
 package com.sistemabusca.servidor.servidorB;
 
+import com.sistemabusca.strategy.servidorb.BuscaDentroDoJson;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,8 +20,10 @@ public class ServidorB {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
+
             String dados = in.readLine();
-            System.out.println(dados);
+
+
 
         }catch (IOException e){
             e.printStackTrace();
