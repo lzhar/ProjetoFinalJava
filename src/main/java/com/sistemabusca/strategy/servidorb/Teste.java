@@ -7,7 +7,7 @@ public class Teste {
         BuscaDentroDoJson buscaDentroDoJsonB = new BuscaDentroDoJson();
         BuscaLinear buscaLinearEmB = new BuscaLinear();
         String endereco = "C:\\Users\\luizh\\OneDrive\\Documents\\Java\\TrabFinalProgConcorrente\\src\\main\\resources\\dados_servidor_b.json";
-        buscaLinearEmB.fazerBuscaLinear(buscaDentroDoJsonB.montarLista(endereco));
+        buscaLinearEmB.fazerBuscaLinear(buscaDentroDoJsonB.montarLista(endereco), "teste");
 
         System.out.println("""
                         === <

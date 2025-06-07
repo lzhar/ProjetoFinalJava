@@ -6,5 +6,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface IBuscaLinear {
-    public void fazerBuscaLinear(List<ArtigoServidorDTO> itens);
+    public void fazerBuscaLinear(List<ArtigoServidorDTO> itens, String subString);
 }

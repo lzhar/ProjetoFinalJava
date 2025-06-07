@@ -8,12 +8,12 @@ import java.util.List;
 public class BuscaLinear implements IBuscaLinear {
 
     @Override
-    public void fazerBuscaLinear(List<ArtigoServidorDTO> itens) {
+    public void fazerBuscaLinear(List<ArtigoServidorDTO> itens, String subString) {
         List<String> listaDeVerificados = new ArrayList<>();
 
 
         for (ArtigoServidorDTO item : itens) {
-            if (item.getTitle().contains("Systematic study")) {
+            if (item.getTitle().contains(subString)) {
                 listaDeVerificados.add(item.getTitle());
             }
         }

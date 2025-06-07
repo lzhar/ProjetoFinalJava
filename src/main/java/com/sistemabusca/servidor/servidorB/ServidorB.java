@@ -24,7 +24,7 @@ public class ServidorB {
 
             String dados = in.readLine();
 
-            fazerBuscaDeManeiraLinear();
+            fazerBuscaDeManeiraLinear(dados);
 
         }catch (IOException e){
             e.printStackTrace();
@@ -40,8 +40,8 @@ public class ServidorB {
         return buscaDentroDoJsonB.montarLista(endereco);
     }
 
-    public static void fazerBuscaDeManeiraLinear(){
+    public static void fazerBuscaDeManeiraLinear(String subString){
         BuscaLinear buscaLinear = new BuscaLinear();
-        buscaLinear.fazerBuscaLinear(recuperarLista());
+        buscaLinear.fazerBuscaLinear(recuperarLista(), subString);
     }
 }
