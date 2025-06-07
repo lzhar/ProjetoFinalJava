@@ -1,5 +1,6 @@
 package com.sistemabusca.servidor.servidorB;
 
+import com.sistemabusca.strategy.buscalinear.BuscaLinear;
 import com.sistemabusca.strategy.servidorb.BuscaDentroDoJson;
 
 import java.io.BufferedReader;
@@ -23,6 +24,8 @@ public class ServidorB {
 
             String dados = in.readLine();
 
+            fazerBuscaDeManeiraLinear();
+
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -35,5 +38,10 @@ public class ServidorB {
         String endereco = "C:\\Users\\luizh\\OneDrive\\Documents\\Java\\TrabFinalProgConcorrente\\src\\main\\resources\\dados_servidor_b.json";
 
         return buscaDentroDoJsonB.montarLista(endereco);
+    }
+
+    public static void fazerBuscaDeManeiraLinear(){
+        BuscaLinear buscaLinear = new BuscaLinear();
+        buscaLinear.fazerBuscaLinear(recuperarLista());
     }
 }

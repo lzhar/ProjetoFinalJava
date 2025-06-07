@@ -2,17 +2,17 @@ package com.sistemabusca.strategy.servidorb;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sistemabusca.strategy.BuscaJsonServidor;
+import com.sistemabusca.strategy.IBuscaJsonServidor;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuscaDentroDoJson implements BuscaJsonServidor {
+public class BuscaDentroDoJson implements IBuscaJsonServidor {
 
     @Override
-    public ArrayList montarLista(String enderecoDoJson) {
+    public ArrayList<ArtigoServidorDTO> montarLista(String enderecoDoJson) {
         ObjectMapper mapper = new ObjectMapper();
         try{
             File arquivoJson = new File(enderecoDoJson);
@@ -20,7 +20,13 @@ public class BuscaDentroDoJson implements BuscaJsonServidor {
 
             List<ArtigoServidorDTO> itens = mapper.readValue(arquivoJson, new TypeReference<List<ArtigoServidorDTO>>(){});
 
-            return armazenarNaLista(itens);
+            List<ArtigoServidorDTO> listaParaVerificacao = new ArrayList<>();
+
+            for (ArtigoServidorDTO item : itens){
+                listaParaVerificacao.add(item);
+            }
+
+            return (ArrayList<ArtigoServidorDTO>) listaParaVerificacao;
 
 
         }catch (IOException e){
@@ -31,19 +37,5 @@ public class BuscaDentroDoJson implements BuscaJsonServidor {
 
     }
 
-    public ArrayList<String> armazenarNaLista(List<ArtigoServidorDTO> itens){
-        List<String> listaParaVerificacao = new ArrayList<>();
-
-        for (ArtigoServidorDTO item : itens){
-            listaParaVerificacao.add(String.valueOf(item.toString()));
-        }
-
-        System.out.println(listaParaVerificacao.get(0));
-//        for (Integer i = 0; i < listaParaVerificacao.size(); i++){
-//            System.out.println(listaParaVerificacao);
-//            System.out.println("---------------");
-//        }
-        return (ArrayList<String>) listaParaVerificacao;
-    }
 
 }
