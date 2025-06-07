@@ -1,11 +1,14 @@
 package com.sistemabusca.servidor.servidorC;
 
+import com.sistemabusca.strategy.servidorb.BuscaDentroDoJson;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServidorC {
     public static void main(String[] args) {
@@ -25,4 +28,13 @@ public class ServidorC {
             e.printStackTrace();
         }
     }
+
+    public static ArrayList recuperarLista(){
+        BuscaDentroDoJson buscaDentroDoJsonC = new BuscaDentroDoJson();
+        String endereco = "C:\\Users\\luizh\\OneDrive\\Documents\\Java\\TrabFinalProgConcorrente\\src\\main\\resources\\dados_servidor_c.json";
+
+        return buscaDentroDoJsonC.montarLista(endereco);
+    }
 }
+
+

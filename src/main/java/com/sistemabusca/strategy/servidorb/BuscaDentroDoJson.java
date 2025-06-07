@@ -12,7 +12,7 @@ import java.util.List;
 public class BuscaDentroDoJson implements BuscaJsonServidor {
 
     @Override
-    public void montarLista(String enderecoDoJson) {
+    public ArrayList montarLista(String enderecoDoJson) {
         ObjectMapper mapper = new ObjectMapper();
         try{
             File arquivoJson = new File(enderecoDoJson);
@@ -20,12 +20,14 @@ public class BuscaDentroDoJson implements BuscaJsonServidor {
 
             List<ArtigoServidorDTO> itens = mapper.readValue(arquivoJson, new TypeReference<List<ArtigoServidorDTO>>(){});
 
-            armazenarNaLista(itens);
+            return armazenarNaLista(itens);
 
 
         }catch (IOException e){
             e.printStackTrace();
+            return null;
         }
+
 
     }
 
@@ -33,13 +35,15 @@ public class BuscaDentroDoJson implements BuscaJsonServidor {
         List<String> listaParaVerificacao = new ArrayList<>();
 
         for (ArtigoServidorDTO item : itens){
-            listaParaVerificacao.add(String.valueOf(item.getClass()));
+            listaParaVerificacao.add(String.valueOf(item.toString()));
         }
 
-        for (Integer i = 0; i < listaParaVerificacao.size(); i++){
-            System.out.println(listaParaVerificacao.get(i));
-            System.out.println("---------------");
-        }
+        System.out.println(listaParaVerificacao.get(0));
+//        for (Integer i = 0; i < listaParaVerificacao.size(); i++){
+//            System.out.println(listaParaVerificacao);
+//            System.out.println("---------------");
+//        }
         return (ArrayList<String>) listaParaVerificacao;
     }
+
 }
