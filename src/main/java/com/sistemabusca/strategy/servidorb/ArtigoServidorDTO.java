@@ -34,6 +34,6 @@ public class ArtigoServidorDTO {
 
     @Override
     public String toString() {
-        return "nome -> "+getTitle()+" descrição -> "+getAbstract()+" label -> "+getLabel();
+        return getTitle()+getAbstract()+getLabel();
     }
 }

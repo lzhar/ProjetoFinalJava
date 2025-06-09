@@ -9,15 +9,19 @@ public class BuscaLinearStrategy implements IBuscaLinear {
 
     @Override
     public void fazerBuscaLinear(List<ArtigoServidorDTO> itens, String subString) {
-        List<String> listaDeVerificados = new ArrayList<>();
+        List<ArtigoServidorDTO> listaDeVerificados = new ArrayList<>();
 
         for (ArtigoServidorDTO item : itens) {
-            if (item.getTitle().contains(subString)) {
-                listaDeVerificados.add(item.getTitle());
+            if (item.getTitle().toLowerCase().contains(subString.toLowerCase()) || item.getAbstract().toLowerCase().contains(subString.toLowerCase()) || item.getLabel().toLowerCase().contains(subString.toLowerCase())) {
+                listaDeVerificados.add(item);
             }
         }
 
-        System.out.println(listaDeVerificados);
+        for (int i = 0; i < listaDeVerificados.size(); i++){
+            System.out.println(listaDeVerificados.get(i).toString());
+            System.out.println("====================================");
+        }
+
 
     }
 
