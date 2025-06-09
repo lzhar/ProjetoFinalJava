@@ -1,5 +1,6 @@
 package com.sistemabusca.servidor.servidorC;
 
+import com.sistemabusca.strategy.buscalinear.BuscaLinear;
 import com.sistemabusca.strategy.servidorb.BuscaDentroDoJson;
 
 import java.io.BufferedReader;
@@ -22,7 +23,7 @@ public class ServidorC {
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
             String dados = in.readLine();
-            System.out.println(dados);
+            fazerBuscaDeManeiraLinear(dados);
 
         }catch (IOException e){
             e.printStackTrace();
@@ -34,6 +35,11 @@ public class ServidorC {
         String endereco = "C:\\Users\\luizh\\OneDrive\\Documents\\Java\\TrabFinalProgConcorrente\\src\\main\\resources\\dados_servidor_c.json";
 
         return buscaDentroDoJsonC.montarLista(endereco);
+    }
+
+    public static void fazerBuscaDeManeiraLinear(String subString){
+        BuscaLinear buscaLinear = new BuscaLinear();
+        buscaLinear.fazerBuscaLinear(recuperarLista(), subString);
     }
 }
 

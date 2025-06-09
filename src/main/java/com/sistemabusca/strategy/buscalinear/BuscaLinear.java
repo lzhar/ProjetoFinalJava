@@ -11,7 +11,6 @@ public class BuscaLinear implements IBuscaLinear {
     public void fazerBuscaLinear(List<ArtigoServidorDTO> itens, String subString) {
         List<String> listaDeVerificados = new ArrayList<>();
 
-
         for (ArtigoServidorDTO item : itens) {
             if (item.getTitle().contains(subString)) {
                 listaDeVerificados.add(item.getTitle());
@@ -19,8 +18,6 @@ public class BuscaLinear implements IBuscaLinear {
         }
 
         System.out.println(listaDeVerificados);
-
-
 
     }
 
