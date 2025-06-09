@@ -1,11 +1,11 @@
 package com.sistemabusca.strategy.servidorb;
 
-import com.sistemabusca.strategy.buscalinear.BuscaLinear;
+import com.sistemabusca.strategy.BuscaLinearStrategy;
 
 public class Teste {
     public static void main(String[] args) {
         BuscaDentroDoJson buscaDentroDoJsonB = new BuscaDentroDoJson();
-        BuscaLinear buscaLinearEmB = new BuscaLinear();
+        BuscaLinearStrategy buscaLinearEmB = new BuscaLinearStrategy();
         String endereco = "C:\\Users\\luizh\\OneDrive\\Documents\\Java\\TrabFinalProgConcorrente\\src\\main\\resources\\dados_servidor_b.json";
         buscaLinearEmB.fazerBuscaLinear(buscaDentroDoJsonB.montarLista(endereco), "teste");
 

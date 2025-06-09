@@ -1,6 +1,7 @@
 package com.sistemabusca.servidor.servidorB;
 
-import com.sistemabusca.strategy.buscalinear.BuscaLinear;
+import com.sistemabusca.context.buscalinear.BuscaLinearContext;
+import com.sistemabusca.strategy.BuscaLinearStrategy;
 import com.sistemabusca.strategy.servidorb.BuscaDentroDoJson;
 
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class ServidorB {
     public static void main(String[] args) {
         final int PORT = 8081;
+        BuscaLinearContext buscaLinearContext = new BuscaLinearContext("b");
 
         try(ServerSocket socket = new ServerSocket(PORT)){
             System.out.println("Servidor aguardando conexão na porta -> " + socket.getLocalPort());
@@ -24,7 +26,9 @@ public class ServidorB {
 
             String dados = in.readLine();
 
-            fazerBuscaDeManeiraLinear(dados);
+
+            buscaLinearContext.fazerBuscaDeManeiraLinear(dados);
+
 
         }catch (IOException e){
             e.printStackTrace();
@@ -33,15 +37,4 @@ public class ServidorB {
 
     }
 
-    public static ArrayList recuperarLista(){
-        BuscaDentroDoJson buscaDentroDoJsonB = new BuscaDentroDoJson();
-        String endereco = "C:\\Users\\luizh\\OneDrive\\Documents\\Java\\TrabFinalProgConcorrente\\src\\main\\resources\\dados_servidor_b.json";
-
-        return buscaDentroDoJsonB.montarLista(endereco);
-    }
-
-    public static void fazerBuscaDeManeiraLinear(String subString){
-        BuscaLinear buscaLinear = new BuscaLinear();
-        buscaLinear.fazerBuscaLinear(recuperarLista(), subString);
-    }
 }

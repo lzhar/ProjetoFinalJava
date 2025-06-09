@@ -1,11 +1,11 @@
-package com.sistemabusca.strategy.buscalinear;
+package com.sistemabusca.strategy;
 
 import com.sistemabusca.strategy.servidorb.ArtigoServidorDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuscaLinear implements IBuscaLinear {
+public class BuscaLinearStrategy implements IBuscaLinear {
 
     @Override
     public void fazerBuscaLinear(List<ArtigoServidorDTO> itens, String subString) {
