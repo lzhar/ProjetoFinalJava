@@ -2,6 +2,7 @@ package com.sistemabusca.servidor.servidorB;
 
 import com.sistemabusca.context.buscalinear.BuscaLinearContext;
 import com.sistemabusca.strategy.BuscaLinearStrategy;
+import com.sistemabusca.strategy.servidorb.ArtigoServidorDTO;
 import com.sistemabusca.strategy.servidorb.BuscaDentroDoJson;
 
 import java.io.BufferedReader;
@@ -11,6 +12,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ServidorB {
     public static void main(String[] args) {
@@ -26,8 +28,20 @@ public class ServidorB {
 
             String dados = in.readLine();
 
+            ArrayList<ArtigoServidorDTO> resultados = buscaLinearContext.fazerBuscaDeManeiraLinear(dados);
 
-            buscaLinearContext.fazerBuscaDeManeiraLinear(dados);
+            if(resultados == null || resultados.isEmpty()){
+                out.println("NENHUM RESULTADO");
+            }else{
+                out.println("INICIO");
+                for(ArtigoServidorDTO artigoServidorDTO : resultados){
+                    out.println(artigoServidorDTO);
+                }
+                out.println(("FIM!"));
+                out.flush();
+            }
+
+
 
 
         }catch (IOException e){

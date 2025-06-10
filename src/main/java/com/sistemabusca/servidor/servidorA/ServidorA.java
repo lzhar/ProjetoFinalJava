@@ -31,7 +31,6 @@ public class ServidorA {
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
         String dados = in.readLine();
-
         return dados;
     }
 
@@ -51,6 +50,20 @@ public class ServidorA {
 
         outParaB.println(string);
         outParaC.println(string);
+
+        StringBuilder respostaB = new StringBuilder();
+        String linhaParaB = inParaB.readLine();
+
+        if(linhaParaB.equals("NENHUM RESULTADO")){
+            respostaB.append("Nenhum resultado foi encontrado");
+        }else if(linhaParaB.equals("INICIO")){
+            while(!(linhaParaB = inParaB.readLine()).equals("FIM!")){
+                respostaB.append(linhaParaB).append("\n");
+            }
+        }
+
+        System.out.println(respostaB);
+
     }
 
 }

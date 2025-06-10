@@ -1,11 +1,14 @@
 package com.sistemabusca.strategy.servidorb;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArtigoServidorDTO {
     private String title;
-    private String abstractt;
+    @JsonProperty("abstract")
+    private String abstractText;
     private String label;
 
     public ArtigoServidorDTO(){
@@ -19,10 +22,10 @@ public class ArtigoServidorDTO {
     }
 
     public String getAbstract(){
-        return this.abstractt;
+        return this.abstractText;
     }
-    public void setAbstract(String abstractt){
-        this.abstractt = abstractt;
+    public void setAbstractt(String abstractText){
+        this.abstractText = abstractText;
     }
 
     public String getLabel(){
@@ -34,6 +37,6 @@ public class ArtigoServidorDTO {
 
     @Override
     public String toString() {
-        return getTitle()+getAbstract()+getLabel();
+        return "Title -> "+getTitle()+" abstract -> "+getAbstract()+" label -> "+getLabel()+"\n"+"-----------\n";
     }
 }

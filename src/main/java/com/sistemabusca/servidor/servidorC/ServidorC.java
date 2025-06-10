@@ -2,6 +2,7 @@ package com.sistemabusca.servidor.servidorC;
 
 import com.sistemabusca.context.buscalinear.BuscaLinearContext;
 import com.sistemabusca.strategy.BuscaLinearStrategy;
+import com.sistemabusca.strategy.servidorb.ArtigoServidorDTO;
 import com.sistemabusca.strategy.servidorb.BuscaDentroDoJson;
 
 import java.io.BufferedReader;
@@ -10,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServidorC {
     public static void main(String[] args) {
@@ -24,7 +27,20 @@ public class ServidorC {
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
             String dados = in.readLine();
-            buscaLinearContext.fazerBuscaDeManeiraLinear(dados);
+
+            ArrayList<ArtigoServidorDTO> resultados = buscaLinearContext.fazerBuscaDeManeiraLinear(dados);
+
+            if(resultados == null || resultados.isEmpty()){
+                out.println("Nenhum resultado encontrado");
+            }else{
+                for(ArtigoServidorDTO artigoServidorDTO : resultados){
+                    out.println(artigoServidorDTO);
+                }
+            }
+
+
+
+
 
         }catch (IOException e){
             e.printStackTrace();

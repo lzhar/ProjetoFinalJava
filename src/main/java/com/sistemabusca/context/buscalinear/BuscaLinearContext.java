@@ -1,9 +1,11 @@
 package com.sistemabusca.context.buscalinear;
 
 import com.sistemabusca.strategy.BuscaLinearStrategy;
+import com.sistemabusca.strategy.servidorb.ArtigoServidorDTO;
 import com.sistemabusca.strategy.servidorb.BuscaDentroDoJson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BuscaLinearContext {
 
@@ -13,7 +15,7 @@ public class BuscaLinearContext {
         this.server = server;
     }
 
-    private ArrayList recuperarLista(){
+    private ArrayList<ArtigoServidorDTO> recuperarLista(){
         BuscaDentroDoJson buscaDentroDoJsonB = new BuscaDentroDoJson();
         String endereco = null;
         if(this.server.equalsIgnoreCase("b")){
@@ -24,8 +26,8 @@ public class BuscaLinearContext {
         return buscaDentroDoJsonB.montarLista(endereco);
     }
 
-    public void fazerBuscaDeManeiraLinear(String subString){
+    public ArrayList<ArtigoServidorDTO> fazerBuscaDeManeiraLinear(String subString){
         BuscaLinearStrategy buscaLinear = new BuscaLinearStrategy();
-        buscaLinear.fazerBuscaLinear(recuperarLista(), subString);
+        return buscaLinear.fazerBuscaLinear(recuperarLista(), subString);
     }
 }
