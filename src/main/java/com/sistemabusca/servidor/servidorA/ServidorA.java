@@ -21,6 +21,7 @@ public class ServidorA {
             System.out.println("cliente -> " + clientSocket.getInetAddress()+ "conectado! ");
             enviarParaServidoresBeC(receberString(clientSocket));
 
+
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -29,12 +30,12 @@ public class ServidorA {
     public static String receberString(Socket clientSocket) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-
         String dados = in.readLine();
-        return dados;
+        out.println(enviarParaServidoresBeC(dados).toString());
+        return String.valueOf(dados);
     }
 
-    public static void enviarParaServidoresBeC(String string) throws IOException{
+    public static StringBuilder enviarParaServidoresBeC(String string) throws IOException{
         final String HOST = "localhost";
         final int PORTB = 8081;
         final int PORTC = 8082;
@@ -73,9 +74,15 @@ public class ServidorA {
             }
         }
 
-        System.out.println(respostaB);
-        System.out.println("============================= DIVISOR");
-        System.out.println(respostaC);
+        StringBuilder respostaDoTotal = new StringBuilder();
+        respostaDoTotal.append("===== RESPONSE OF B ======\n")
+                .append(respostaB)
+                .append("\n==========================")
+                .append("\n======= RESPONSE OF C ========= \n")
+                .append(respostaC)
+                .append("\nEND OF ARTIGOS");
+
+        return respostaDoTotal;
     }
 
 }
