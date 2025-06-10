@@ -1,15 +1,15 @@
-package com.sistemabusca.strategy.servidorb;
+package com.sistemabusca.strategy.servidor;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ArtigoServidorDTO {
+    @JsonProperty("title")
     private String title;
     @JsonProperty("abstract")
     private String abstractText;
+    @JsonProperty("label")
     private String label;
+
 
     public ArtigoServidorDTO(){
     }
@@ -37,6 +37,6 @@ public class ArtigoServidorDTO {
 
     @Override
     public String toString() {
-        return "Title -> "+getTitle()+" abstract -> "+getAbstract()+" label -> "+getLabel()+"\n"+"-----------\n";
+        return String.format("Title of article: %s. Abstract of article: %sLabel of article: %s \n=========", getTitle(), getAbstract(), getLabel());
     }
 }

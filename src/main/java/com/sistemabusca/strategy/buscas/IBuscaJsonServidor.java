@@ -1,6 +1,6 @@
-package com.sistemabusca.strategy;
+package com.sistemabusca.strategy.buscas;
 
-import com.sistemabusca.strategy.servidorb.ArtigoServidorDTO;
+import com.sistemabusca.strategy.servidor.ArtigoServidorDTO;
 
 import java.util.ArrayList;
 

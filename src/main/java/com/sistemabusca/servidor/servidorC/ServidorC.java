@@ -1,9 +1,7 @@
 package com.sistemabusca.servidor.servidorC;
 
 import com.sistemabusca.context.buscalinear.BuscaLinearContext;
-import com.sistemabusca.strategy.BuscaLinearStrategy;
-import com.sistemabusca.strategy.servidorb.ArtigoServidorDTO;
-import com.sistemabusca.strategy.servidorb.BuscaDentroDoJson;
+import com.sistemabusca.strategy.servidor.ArtigoServidorDTO;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +10,6 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ServidorC {
     public static void main(String[] args) {

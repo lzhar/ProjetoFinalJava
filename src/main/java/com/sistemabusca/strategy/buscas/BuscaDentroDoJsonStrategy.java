@@ -1,15 +1,15 @@
-package com.sistemabusca.strategy.servidorb;
+package com.sistemabusca.strategy.buscas;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sistemabusca.strategy.IBuscaJsonServidor;
+import com.sistemabusca.strategy.servidor.ArtigoServidorDTO;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuscaDentroDoJson implements IBuscaJsonServidor {
+public class BuscaDentroDoJsonStrategy implements IBuscaJsonServidor {
 
     @Override
     public ArrayList<ArtigoServidorDTO> montarLista(String enderecoDoJson) {

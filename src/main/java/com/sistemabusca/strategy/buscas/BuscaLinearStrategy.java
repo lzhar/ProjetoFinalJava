@@ -1,6 +1,6 @@
-package com.sistemabusca.strategy;
+package com.sistemabusca.strategy.buscas;
 
-import com.sistemabusca.strategy.servidorb.ArtigoServidorDTO;
+import com.sistemabusca.strategy.servidor.ArtigoServidorDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +16,6 @@ public class BuscaLinearStrategy implements IBuscaLinear {
                 listaDeVerificados.add(item);
             }
         }
-
-//        for (int i = 0; i < listaDeVerificados.size(); i++){
-//            System.out.println(listaDeVerificados.get(i).toString());
-//            System.out.println("====================================");
-//        }
 
         return listaDeVerificados;
 

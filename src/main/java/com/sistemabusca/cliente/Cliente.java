@@ -20,12 +20,14 @@ public class Cliente {
         out.println(enviarSubString());
 
         String linhaResposta;
-
+        int contador = 0;
         while ((linhaResposta = in.readLine()) != null) {
             System.out.println(linhaResposta);
-            if(linhaResposta.equals("END OF ARTIGOS")) break;
+            contador++;
+            if (linhaResposta.equals("END OF ARTIGOS")) break;
         }
-
+        System.out.println(contador);
+        socket.close();
     }
 
     public static String enviarSubString(){
