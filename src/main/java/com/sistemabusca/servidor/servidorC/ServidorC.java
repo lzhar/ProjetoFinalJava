@@ -31,15 +31,15 @@ public class ServidorC {
             ArrayList<ArtigoServidorDTO> resultados = buscaLinearContext.fazerBuscaDeManeiraLinear(dados);
 
             if(resultados == null || resultados.isEmpty()){
-                out.println("Nenhum resultado encontrado");
+                out.println("EMPTY");
             }else{
+                out.println("START");
                 for(ArtigoServidorDTO artigoServidorDTO : resultados){
                     out.println(artigoServidorDTO);
                 }
+                out.println(("END!"));
+                out.flush();
             }
-
-
-
 
 
         }catch (IOException e){

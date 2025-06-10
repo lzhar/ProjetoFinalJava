@@ -54,16 +54,28 @@ public class ServidorA {
         StringBuilder respostaB = new StringBuilder();
         String linhaParaB = inParaB.readLine();
 
-        if(linhaParaB.equals("NENHUM RESULTADO")){
-            respostaB.append("Nenhum resultado foi encontrado");
-        }else if(linhaParaB.equals("INICIO")){
-            while(!(linhaParaB = inParaB.readLine()).equals("FIM!")){
+        if(linhaParaB.equals("EMPTY")){
+            respostaB.append("NO RESULTS");
+        }else if(linhaParaB.equals("START")){
+            while(!(linhaParaB = inParaB.readLine()).equals("END!")){
                 respostaB.append(linhaParaB).append("\n");
             }
         }
 
-        System.out.println(respostaB);
+        StringBuilder respostaC = new StringBuilder();
+        String linhaParaC = inParaC.readLine();
 
+        if(linhaParaC.equals("EMPTY")){
+            respostaC.append("NO RESULTS");
+        }else if(linhaParaC.equals("START")){
+            while(!(linhaParaC = inParaC.readLine()).equals("END!")){
+                respostaC.append(linhaParaC).append("\n");
+            }
+        }
+
+        System.out.println(respostaB);
+        System.out.println("============================= DIVISOR");
+        System.out.println(respostaC);
     }
 
 }
