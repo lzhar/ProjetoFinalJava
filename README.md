@@ -51,3 +51,8 @@ Logo abaixo, declaramos uma nova lista chamada listaParaVerificacao, também do 
 ### Cliente
 
 - Temos o método main e o método `enviarSubString()`, que serve basicamente para pedir ao usuário digitar a subString e retorna essa subString, já no método main ele se conecta ao servidorA que está na porta 8080, e chama dentro do out o método `enviarSubString()` para enviar a subString para o servidorA, abaixo ele entra em um loop while que se for diferente de null é exibido no console a variável linhaResposta que a cada execução é um `in.readLine()` e temos uma verificação, se a linhaResposta for "END OF ARTICLES" ele encerra. Ao final ele fecha a conexão com servidor.
+
+
+## Diagrama básico do sistema
+
+![Minha imagem](https://github.com/lzhar/ProjetoFinalJava/blob/feature/busca-distribuida/src/main/imagens/Captura%20de%20tela%202025-06-11%20012935.png)
