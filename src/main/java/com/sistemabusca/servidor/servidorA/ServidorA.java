@@ -81,7 +81,7 @@ public class ServidorA {
                 .append("\n==========================")
                 .append("\n======= RESPONSE OF C ========= \n")
                 .append(respostaC)
-                .append("\nEND OF ARTIGOS");
+                .append("\nEND OF ARTICLES");
 
         return respostaDeBeC;
     }

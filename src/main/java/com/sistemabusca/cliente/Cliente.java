@@ -24,7 +24,7 @@ public class Cliente {
         while ((linhaResposta = in.readLine()) != null) {
             System.out.println(linhaResposta);
             contador++;
-            if (linhaResposta.equals("END OF ARTIGOS")) break;
+            if (linhaResposta.equals("END OF ARTICLES")) break;
         }
         System.out.println(contador);
         socket.close();
