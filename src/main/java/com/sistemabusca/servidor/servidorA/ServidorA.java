@@ -82,11 +82,6 @@ public class ServidorA {
         }
 
 
-
-
-
-
-
         StringBuilder respostaDeBeC = new StringBuilder();
         respostaDeBeC.append("\n======= RESPONSE OF B ========= \n")
                 .append(respostaB)
