@@ -6,6 +6,9 @@ Projeto em Java envolvendo os conceitos trabalhados em sala na disciplina de Pro
 * **Maven para controle de dependências**
 + **Foi utilizada a biblioteca jackson para trabalhar com arquivos .json**
 
+# Tutorial de como utilizar:
+Ordem para que o projeto funcione: compile primeiro os servidores A, B e C e, após isso, compile o cliente. O terminal solicitará que você insira a palavra-chave.
+
 
 ## Estrutura dos packages
 ```text
