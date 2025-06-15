@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.sql.SQLOutput;
 
 public class ServidorA {
     public static void main(String[] args) throws IOException {
@@ -41,39 +42,50 @@ public class ServidorA {
         final int PORTB = 8081;
         final int PORTC = 8082;
 
-        Socket socketParaB = new Socket(HOST, PORTB);
-        Socket socketParaC = new Socket(HOST, PORTC);
-
-        PrintWriter outParaB = new PrintWriter(socketParaB.getOutputStream(), true);
-        BufferedReader inParaB = new BufferedReader(new InputStreamReader(socketParaB.getInputStream()));
-
-        PrintWriter outParaC = new PrintWriter(socketParaC.getOutputStream(), true);
-        BufferedReader inParaC = new BufferedReader(new InputStreamReader(socketParaC.getInputStream()));
-
-        outParaB.println(string);
-        outParaC.println(string);
-
         StringBuilder respostaB = new StringBuilder();
-        String linhaParaB = inParaB.readLine();
-
-        if(linhaParaB.equals("EMPTY")){
-            respostaB.append("EMPTY RESULT");
-        }else if(linhaParaB.equals("START")){
-            while(!(linhaParaB = inParaB.readLine()).equals("END!")){
-                respostaB.append(linhaParaB).append("\n");
-            }
-        }
-
         StringBuilder respostaC = new StringBuilder();
-        String linhaParaC = inParaC.readLine();
 
-        if(linhaParaC.equals("EMPTY")){
-            respostaC.append("EMPTY RESULT");
-        }else if(linhaParaC.equals("START")){
-            while(!(linhaParaC = inParaC.readLine()).equals("END!")){
-                respostaC.append(linhaParaC).append("\n");
+        try{
+            Socket socketParaB = new Socket(HOST, PORTB);
+            PrintWriter outParaB = new PrintWriter(socketParaB.getOutputStream(), true);
+            BufferedReader inParaB = new BufferedReader(new InputStreamReader(socketParaB.getInputStream()));
+            outParaB.println(string);
+
+            String linhaParaB = inParaB.readLine();
+            if(linhaParaB.equals("EMPTY")){
+                respostaB.append("EMPTY RESULT");
+            }else if(linhaParaB.equals("START")){
+                while(!(linhaParaB = inParaB.readLine()).equals("END!")){
+                    respostaB.append(linhaParaB).append("\n");
+                }
             }
+        }catch (Exception e){
+            System.out.println("Não foi possivel conectar no servidor B");
         }
+        try{
+            Socket socketParaC = new Socket(HOST, PORTC);
+            PrintWriter outParaC = new PrintWriter(socketParaC.getOutputStream(), true);
+            outParaC.println(string);
+            BufferedReader inParaC = new BufferedReader(new InputStreamReader(socketParaC.getInputStream()));
+            String linhaParaC = inParaC.readLine();
+
+            if(linhaParaC.equals("EMPTY")){
+                respostaC.append("EMPTY RESULT");
+            }else if(linhaParaC.equals("START")){
+                while(!(linhaParaC = inParaC.readLine()).equals("END!")){
+                    respostaC.append(linhaParaC).append("\n");
+                }
+            }
+        }catch (Exception e){
+            System.out.println("Não foi possivel se conectar no servidor C");
+
+        }
+
+
+
+
+
+
 
         StringBuilder respostaDeBeC = new StringBuilder();
         respostaDeBeC.append("\n======= RESPONSE OF B ========= \n")
